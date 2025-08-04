@@ -1,0 +1,170 @@
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    padding:0px;
+    
+}
+.Main-heading{
+    text-align: center;
+    font-size: 18px;
+    background-image:url(bikeworld\ bg.jpg);
+    color:#fff;
+    text-shadow:1px 0.25px #fff;
+    padding:1em 0;
+    top:0;
+}
+.nav-link{
+    text-align: center;
+    padding-left:25px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    padding-right:25px;
+    color:#fff;
+    text-decoration: none;
+    background-color: black;
+    margin:0;
+    top:0;
+}
+a{
+    text-align: center;
+    font-size: large;
+    border-radius: 10px;
+    border:none;
+    padding: 0%;
+    transition: transform 0.3s;
+
+    
+}
+a:hover{
+    background-color: grey;
+    color:#fff;
+    transform: scale(1.05);
+}
+.return{
+    button{
+        border-radius:100px;
+        border:1px solid grey;
+        font-size: x-large;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        padding:5px;
+    }
+    button:hover{
+        background-color: grey;
+        border:1px solid black;
+    }
+}
+button{
+    border-radius:60px;
+    background-color: white;
+    color:black;
+    border: 1px solid grey;
+}
+button:hover{
+    background-color: gray;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+.left {
+    width: 75%; /* 75% of the page */
+    padding: 20px;
+    
+    border-width: 100%;
+}
+.carousel-container {
+    width: 500px;
+    height: 400px;
+    overflow: hidden; /* Ensures only one image is shown at a time */
+    position: relative;
+    margin-bottom: 10px;
+}
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(500px * 5); /* 5 images, each 500px wide */
+}
+.carousel img {
+    width: 500px;
+    height: 400px;
+    flex-shrink: 0;
+}
+.image-description {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.paragraph {
+    margin-top: 20px;
+    font-size: 16px;
+}
+.right {
+    width: 25%; /* 25% of the page */
+    padding: 20px;
+    border-left: 1px solid grey; /* Vertical separator line */
+    
+}
+.bike-webpage{
+    color:black;
+    text-decoration:none;
+
+}
+.bike-webpage:hover{
+    color:black;
+    text-decoration:none;
+}
+.carousel-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+.carousel-controls button {
+    padding: 10px;
+    font-size: 16px;
+}
+.other-bikes-section {
+    margin-top: 20px;
+}
+.other-bikes-section h2 {
+    margin-bottom: 10px;
+}
+.bike-list {
+    list-style-type: none;
+}
+.bike-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: transform 0.3s ease; /* Smooth transition */
+    border-bottom: 1px solid grey; /* Horizontal separator line */
+}
+.bike-list li:hover {
+    transform: scale(1.1); /* Enlarge the list item on hover */
+}
+.bike-list img {
+    width: 50px;
+    height: 50px;
+}
+.footer{
+    background-color: black;
+    color:#fff;
+    a{
+        color:white;
+        text-decoration: none;
+
+    }
+    a:hover{
+        text-decoration: none;
+        background-color: black;
+    }
+}

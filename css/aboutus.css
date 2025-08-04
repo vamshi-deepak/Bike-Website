@@ -1,0 +1,162 @@
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    padding:0px;
+    background: white;
+}
+.Main-heading{
+    text-align: center;
+    font-size: 18px;
+    background-image:url(bikeworld\ bg.jpg);
+    color:#fff;
+    text-shadow:1px 0.25px #fff;
+    padding:1em 0;
+    top:0;
+}
+.nav-link{
+    text-align: center;
+    padding-left:25px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    padding-right:25px;
+    color:#fff;
+    text-decoration: none;
+    background-color: black;
+    margin:0;
+    top:0;
+}
+a{
+    text-align: center;
+    font-size: large;
+    border-radius: 10px;
+    border:none;
+    padding: 0%;
+    transition: transform 0.3s;
+
+    
+}
+a:hover{
+    background-color: grey;
+    color:#fff;
+    transform: scale(1.05);
+}
+.images {
+    display: flex;              
+    justify-content: space-around;  
+    align-items: flex-start; 
+    gap: 5px;                  
+    flex-wrap: wrap;            
+}
+figure{
+    display:flex;
+    border:1px solid grey;
+    border-radius: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px; 
+    max-width: 1400px;
+    margin: auto; 
+    padding: 20px;
+}
+
+
+.grid-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+
+.grid-item p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr; 
+    }
+}
+.footer{
+    background-color: black;
+    color:#fff;
+    a{
+        color:white;
+        text-decoration: none;
+
+    }
+    a:hover{
+        text-decoration: none;
+        background-color: black;
+    }
+}
+.search{
+    text-align:right;
+    padding-right:50px;
+    input{
+        border-radius:40px;
+        padding:10px;
+        border:none;
+        background-color:#fff;
+        width:250px;
+        
+    }
+    img{
+        position: absolute;
+        padding-top:6px;
+        
+        
+    }
+    input::placeholder{
+        color:grey;
+    }
+
+}
+.main-body{
+background-color:cornflowerblue;
+}
+
+
+

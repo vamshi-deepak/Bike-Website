@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/registerform.css" />
+    <link rel="icon" type="icon" href="Icon.jpg" />
+  </head>
+  <body>
+    <div class="Wrapper">
+      <form id="registerForm">
+        <h1>SignUp</h1>
+        <div class="input-box">
+          <input type="text" id="firstName" placeholder="First Name" required />
+        </div>
+        <div class="input-box">
+          <input type="text" id="lastName" placeholder="Last Name" required />
+        </div>
+        <div class="input-box">
+          <input type="email" id="email" placeholder="Enter your Email" required />
+        </div>
+        <div class="input-box">
+          <input type="text" id="username" placeholder="Enter a Username" required />
+        </div>
+        <div class="input-box">
+          <input type="password" id="password" placeholder="Enter your password" required />
+          <br /><br />
+          <input type="password" id="confirmPassword" placeholder="Re-Enter your password" required />
+        </div>
+        <br /><br /><br />
+        <button type="submit" class="button">Continue</button>
+        <br>
+        <div class="register-form">
+          &nbsp;&nbsp;&nbsp;
+          <p>
+            Already have an account?<a href="Login.html" style="color:white;">Login</a>
+            <br /><br />
+            <a href="Homepage.html" style="color:white;">Skip & continue</a>
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.getElementById('registerForm');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent page reload
+
+        // Get form values
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Validation
+        if (!firstName || !lastName || !email || !username || !password) {
+          alert("All fields are required!");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert("Passwords don't match!");
+          return;
+        }
+
+        // Create user object
+        const user = {
+          name: `${firstName} ${lastName}`,
+          email,
+          username,
+          password,
+        };
+
+        try {
+          // Send request to the backend
+          const response = await fetch('http://localhost:3000/api/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+          });
+
+          const data = await response.json();
+
+          if (response.status === 201) {
+            alert(data.message);
+            window.location.href = 'Homepage.html'; // Redirect to homepage after successful registration
+          } else {
+            alert(data.message || "Registration failed!");
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred while registering. Please try again later.');
+        }
+      });
+    </script>
+  </body>
+</html>

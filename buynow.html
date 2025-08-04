@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Buy Now - Bike World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/Bikes.css">
+    <link rel="icon" type="image/png" href="motorbike.png">
+    <style>
+        /* Box Container Styles */
+        .box-container {
+            background-color: #f9f9f9;
+            width: 60%;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Input Box Styles */
+        .input-box {
+            width: 80%;
+            margin: 10px auto;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            display: block;
+        }
+
+        .input-box:focus {
+            border-color: blue;
+        }
+
+        /* Continue Button */
+        .continue-btn {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .continue-btn:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Heading -->
+    <div class="Main-heading">
+        <br><br>
+        <h1>Bike World</h1>
+        <p>One stop destination for all bikes</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="main-body">
+        <div class="nav-link">
+            <nav class="nav justify-content-center">
+                |<a class="nav-link Home" href="HomePage.html" aria-current="page">Home</a>|
+                <a class="nav-link Accessories" href="Accessories.html">Accessories</a>|
+                <a class="nav-link About" href="New-launches.html">New Launches</a>|
+                <a class="nav-link Login" href="Login.html">Login</a>|
+                <a class="nav-link Login" href="Myaccount.html">Account</a>|
+            </nav>
+        </div>
+    </div>
+
+    <!-- Buy Now Section -->
+    <div class="box-container">
+        <h2>Shipping Details</h2>
+        <p><strong>Product:</strong> Royal Enfield Hunter 350</p>
+        <p><strong>Price:</strong> ₹ 1,83,475</p>
+
+        <!-- Form for Buyer Details -->
+        <form id="order-form">
+            <input type="text" class="input-box" name="name" placeholder="Name of Buyer" required><br>
+            <input type="tel" class="input-box" name="phone" placeholder="Phone Number" required><br>
+            <input type="email" class="input-box" name="email" placeholder="Email Address" required><br>
+            <input type="text" class="input-box" name="city" placeholder="City" required><br>
+            <input type="text" class="input-box" name="state" placeholder="State" required><br>
+            <input type="text" class="input-box" name="address" placeholder="Address" required><br>
+            <input type="text" class="input-box" name="zipcode" placeholder="Zipcode" required><br>
+            <button type="submit" class="continue-btn">Continue with Order</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <hr>
+        <p>&copy; Bike World. All Rights Reserved.</p>
+        <p>Contact us through: <a href="mailto:bikeworld@gmail.com">bikeworld@gmail.com</a></p>
+        <center>
+            <a class="nav-link Bikes" href="About us.html">About Us</a>
+            <p>Follow us on:</p>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a> |
+            <a href="https://x.com/?lang=en&mx=2" target="_blank">Twitter</a>
+        </center>
+        <hr>
+        <p><em>Note:</em> If any information is outdated, please contact us: <a href="mailto:bikeworld@gmail.com">bikeworld@gmail.com</a></p>
+    </div>
+
+    <script>
+        document.getElementById('order-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    try {
+        const response = await fetch('http://localhost:3000/api/submit-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        // Check if the response is successful
+        if (!response.ok) {
+            const errorText = await response.text(); // Get response text if not OK
+            console.error('Error:', errorText);
+            alert('Failed to place the order');
+            return;
+        }
+
+        const result = await response.json();
+        alert('Order successfully placed!');
+        window.location.href = 'payment.html'; // Redirect to payment page
+    } catch (error) {
+        console.error('An error occurred:', error);
+        alert('An error occurred: ' + error.message);
+    }
+});
+
+    </script>
+
+</body>
+</html>

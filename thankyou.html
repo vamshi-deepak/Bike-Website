@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Thank You for Your Order</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Bikes.css">
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+
+        .thank-you-container {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            border: 2px solid #0078D7;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .thank-you-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .thank-you-container p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-container button {
+            padding: 10px 20px;
+            background-color: #0078D7;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .thank-you-container button:hover {
+            background-color: #004A9E;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Heading -->
+    <div class="Main-heading">
+        <h1>Bike World</h1>
+        <p>One stop destination for all bikes</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="main-body">
+        <div class="nav-link">
+            <nav class="nav justify-content-center">
+                |<a class="nav-link Home" href="hunterpage.html" aria-current="page">Home</a>| 
+                <a class="nav-link Accessories" href="Accessories.html">Accessories</a>| 
+                <a class="nav-link About" href="New-launches.html">New Launches</a>| 
+                <a class="nav-link Login" href="Login.html">Login</a>| 
+                <a class="nav-link Login" href="Myaccount.html">Account</a>|
+            </nav>
+        </div>
+    </div>
+
+    <!-- Thank You Container -->
+    <div class="thank-you-container">
+        <h1>Thank You for Your Order!</h1>
+        <p>Your order has been placed successfully.</p>
+        <button onclick="cancelOrder()">Cancel Order</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer" style ="background-color: black;">
+        <hr>
+        <p>&copy; Bike World. </p> 
+        <p>All Rights reserved.</p>
+        <p>Contact us through:<a href="mailto:vamshideepakbachu@gmail.com">bikeworld@gmail.com</a></p>
+        <center>
+            <a  href="About us.html">About Us</a>
+            <p>Follow us on:</p>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>  | 
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>  | 
+            <a href="https://x.com/?lang=en&mx=2" target="_blank">Twitter</a>
+        </center>
+        <hr>
+        <p><em>Note:</em> The above information is collected from different bike websites and authorized. If any information is outdated or needs to be changed, please contact us: <a href="mailto:vamshideepakbachu@gmail.com">bikeworld@gmail.com</a></p>
+    </div>
+
+    <script>
+        function cancelOrder() {
+            const orderId = 'order_id_here';  // Replace with the actual order ID
+
+            fetch('http://localhost:3000/api/cancel-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ orderId: orderId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Your order has been cancelled');
+                    window.location.href = 'hunterpage.html'; // Redirect back to home page
+                } else {
+                    alert('Failed to cancel the order');
+                }
+            })
+            .catch(error => {
+                alert('Error cancelling the order');
+            });
+        }
+    </script>
+
+</body>
+</html>

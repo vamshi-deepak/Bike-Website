@@ -1,0 +1,115 @@
+/* style.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    padding: 20px;
+    margin:0;
+    font-family: Arial, sans-serif;
+    padding:0px;
+    background-image: url("https://img.freepik.com/premium-photo/motorcycle-showroom-interior-design-with-dark-tone-color-background-product-with-copy-space_1099751-16500.jpg");
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: cover;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .profile-header h2 {
+    margin-top: 10px;
+  }
+  
+  .profile-details {
+    width: 100%;
+  }
+  
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    align-items: center;
+  }
+  
+  .detail label {
+    font-weight: bold;
+  }
+  
+  .edit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  .Main-heading{
+    text-align: center;
+    font-size: 18px;
+    background-image:url(bikeworld\ bg.jpg);
+    color:#fff;
+    text-shadow:1px 0.25px #fff;
+    padding:1em 0;
+    top:0;
+}
+.nav-link{
+    text-align: center;
+    padding-left:25px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    padding-right:25px;
+    color:#fff;
+    text-decoration: none;
+    background-color: black;
+    margin:0;
+    top:0;
+}
+a{
+    text-align: center;
+    font-size: large;
+    border-radius: 10px;
+    border:none;
+    padding: 0%;
+    transition: transform 0.3s;
+
+    
+}
+a:hover{
+    background-color: grey;
+    color:#fff;
+    transform: scale(1.05);
+}

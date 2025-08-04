@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Payment Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Bikes.css">
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+
+        /* Navigation Bar */
+        .nav-link {
+            text-align: center;
+        }
+
+        .nav-link a {
+            text-decoration: none;
+            color: #0078D7;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .nav-link a:hover {
+            text-decoration: underline;
+            color: #004A9E;
+        }
+
+        /* Payment Form Styles */
+        .payment-container {
+            width: 400px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .payment-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-container label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .payment-container input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .payment-container button {
+            padding: 10px;
+            background-color: #0078D7;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .payment-container button:hover {
+            background-color: #004A9E;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Heading -->
+    <div class="Main-heading">
+        <h1>Bike World</h1>
+        <p>One stop destination for all bikes<br><br></p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="main-body">
+        <div class="nav-link">
+            <nav class="nav justify-content-center">
+                |<a class="nav-link Home" href="hunterpage.html" aria-current="page">Home</a>| 
+                <a class="nav-link Accessories" href="Accessories.html">Accessories</a>| 
+                <a class="nav-link About" href="New-launches.html">New Launches</a>| 
+                <a class="nav-link Login" href="Login.html">Login</a>| 
+                <a class="nav-link Login" href="Myaccount.html">Account</a>|
+            </nav>
+        </div>
+    </div>
+
+    <!-- Payment Form -->
+    <div class="payment-container">
+        <h2>Enter Payment Details</h2>
+        <form id="payment-form">
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" placeholder="xxxx-xxxx-xxxx-xxxx" required><br><br>
+
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" name="expiry-date" placeholder="DD/MM/YY" required><br><br>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="xxx" required><br><br>
+
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <hr>
+        <p>&copy; Bike World. </p> 
+        <p>All Rights reserved.</p>
+        <p>Contact us through:<a href="mailto:vamshideepakbachu@gmail.com">bikeworld@gmail.com</a></p>
+        <center>
+            <a class="nav-link Bikes" href="About us.html">About Us</a>
+            <p>Follow us on:</p>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>  | 
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>  | 
+            <a href="https://x.com/?lang=en&mx=2" target="_blank">Twitter</a>
+        </center>
+        <hr>
+        <p><em>Note:</em> The above information is collected from different bike websites and authorized. If any information is outdated or needs to be changed, please contact us: <a href="mailto:vamshideepakbachu@gmail.com">bikeworld@gmail.com</a></p>
+    </div>
+
+    <script>
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate input values (simple check)
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (!cardNumber || !expiryDate || !cvv) {
+                alert('Please fill all payment details.');
+                return;
+            }
+
+            // Mask the card number (show first 3 and last 4 digits)
+            const maskedCardNumber = cardNumber.substring(0, 3) + '****-****-' + cardNumber.substring(cardNumber.length - 4);
+            alert(`Payment Successful! Your card: ${maskedCardNumber}`);
+            
+            // Call backend to save the order information (Price of the bike)
+            fetch('http://localhost:3000/api/submit-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: 'Buyer Name', phone: '1234567890', email: 'example@email.com', city: 'City', state: 'State', address: 'Address', zipcode: '12345' }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Order placed successfully!');
+                window.location.href = 'thank-you.html'; // Redirect to Thank You page
+            })
+            .catch(error => {
+                alert('Error placing the order');
+            });
+        });
+    </script>
+</body>
+</html>

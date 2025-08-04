@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hunter 350</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/Bikes.css">
+    <link rel="icon" type="image/png" href="motorbike.png">
+    <style>/* Style for the Buy Now Button */
+        .buy-now-container {
+            text-align: center;
+            margin-top: 10px; /* Slight margin to push the button down */
+        }
+        
+        .buy-now-button {
+            background-color: blue; /* Blue background */
+            color: white;            /* White text */
+            padding: 15px 30px;      /* Add padding to the button */
+            font-size: 18px;         /* Set font size */
+            border: none;            /* Remove border */
+            border-radius: 5px;      /* Add rounded corners */
+            cursor: pointer;        /* Change cursor to pointer on hover */
+            transition: background-color 0.3s ease; /* Smooth transition for background color */
+        }
+        
+        .buy-now-button:hover {
+            background-color: darkblue; /* Darker blue on hover */
+        }
+        </style>
+</head>
+<body>
+    <!-- Main Heading -->
+    <div class="Main-heading" id="1">
+        <br><br>
+        <h1>Bike World</h1>
+        <p>One stop destination for all bikes</p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="main-body">
+        <div class="nav-link">
+            <nav class="nav justify-content-center">
+                |<a class="nav-link Home" href="HomePage.html" aria-current="page">Home</a>|
+                <a class="nav-link Accessories" href="Accessories.html">Accessories</a>|
+                <a class="nav-link About" href="New-launches.html">New Launches</a>|
+                <a class="nav-link Login" href="Login.html">Login</a>|
+                <a class="nav-link Login" href="Myaccount.html">Account</a>|
+            </nav>
+        </div>
+    </div>
+
+    <!-- Return Button -->
+    <a href="HomePage.html" class="return"><button type="button">&lt;</button></a>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left">
+            <!-- Carousel Section -->
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <img src="https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/hunter-350/gallery/thumbnail/gallery-1-thumbnail.jpg" alt="HUNTER 350">
+                    <img src="https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/hunter-350/gallery/thumbnail/gallery-5-thumbnail.jpg" alt="HUNTER 350">
+                    <img src="https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/hunter-350/gallery/thumbnail/gallery-2-thumbnail.jpg" alt="HUNTER 350">
+                    <img src="https://media.assettype.com/evoindia%2F2022-08%2Feb2efecd-450c-4fd7-b21c-3c46508d7d06%2F1.jpg?w=1024&auto=format%2Ccompress&fit=max" alt="HUNTER 350">
+                    <img src="https://imgd.aeplcdn.com/1056x594/n/cw/ec/136475/royalenfield-hunter-350-right-side-view0.jpeg?isig=0&wm=3&q=80" alt="HUNTER 350">
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button onclick="prevImage()">&lt;</button>
+                <button onclick="nextImage()">&gt;</button>
+            </div>
+
+            <!-- Image Description -->
+            <strong>
+                <div class="image-description" id="image-description">
+                    Royal Enfield Hunter 350<br><br><em>price : </em>₹ 1,83,475 Lakh*
+                </div>
+            </strong>
+
+            <form ondbclick="button" action="buynow.html"><!-- Buy Now Button (Placed directly below price) -->
+            <div class="buy-now-container">
+                <button class="buy-now-button" >Buy Now</button>
+            </div></form>
+        </div>
+
+        <div class="paragraph">
+            <ul>
+                <p>
+                    <li><strong>Price :</strong>₹ 1,83,475 Lakh* </li><br>
+                    <li><strong>Engine:</strong> 349.34 cc, air/oil-cooled, single-cylinder, four-stroke engine with a single overhead camshaft and two valves per cylinder </li><br>
+                    <li><strong>Power:</strong> 20.2 bhp at 6,100 rpm </li><br>
+                    <li><strong>Torque: </strong>27 Nm at 4,000 rpm </li><br>
+                    <li><strong>Transmission: </strong>5-speed manual </li><br>
+                    <li><strong>Fuel tank capacity:</strong> 13 liters </li><br>
+                    <li><strong>Fuel type:</strong> Petrol </li><br>
+                    <li><strong>Mileage:</strong> 36 kmpl (ARAI) </li><br>
+                    <li><strong>Top speed:</strong> 130 kmph </li><br>
+                    <li><strong>Brakes:</strong> Front disc and rear drum brakes with anti-locking braking system</li><br> 
+                    <li><strong>Suspension:</strong> Telescopic, 41 mm forks in the front and twin tube emulsion shock absorbers with 6-step adjustable preload in the rear </li><br>
+                    <li><strong>Tyre size:</strong> 100/80-17 in the front and 120/80-17 in the rear </li><br>
+                    <li><strong>Wheel size:</strong> 431.8 mm in the front and rear </li><br>
+                    <li><strong>Weight:</strong> 181 kg </li><br>
+                    <li><strong>Saddle height</strong>: 790 mm </li><br>
+                    <li><strong>Ground clearance:</strong> 150 mm </li><br>
+                    <li><strong>Wheelbase:</strong> 1370 mm</li><br>
+                </p>
+            </ul>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right">
+            <div class="other-bikes-section">
+                <h2>Other Bikes</h2>
+                <ul class="bike-list">
+                    <a class="bike-webpage" href=""><li>Hero Xtreme 125R <img src="https://images.91wheels.com/assets/b_images/main/models/profile/profile1706004703.jpg?width=420&q=60?w=420&q=60" alt="Hero Xtreme 125R"></li></a>
+                    <a class="bike-webpage" href=""><li>Hero Xpulse 200 4V <img src="https://images.91wheels.com/assets/b_images/main/models/profile/profile1661765175.jpg" alt="Hero Xpulse 200 4V"></li></a>    
+                    <a class="bike-webpage" href=""><li>Hero Xtreme 160R BS6 <img src="https://www.carandbike.com/_next/image?url=https%3A%2F%2Fimages.carandbike.com%2Fbike-images%2Fcolors%2Fhero%2Fxtreme-160r-4v%2Fhero-xtreme-160r-4v-neon-shooting-star.jpg%3Fv%3D1686906029&w=640&q=75" alt="Hero Xtreme 160R BS6"></li></a>
+                    <li>Royal Enfield Himalayan 450
+                        <img src="https://bikes.motobank.co.uk/fp/50934/royal-enfield-himalayan-450-2024-kaza-brown_817543.jpg" alt="Royal Enfield Himalayan 450"></li>
+                    <li>Royal Enfield Interceptor 650 <img src="https://www.carandbike.com/_next/image?url=https%3A%2F%2Fimages.carandbike.com%2Fbike-images%2Fcolors%2Fhero%2Fxtreme-160r-4v%2Fhero-xtreme-160r-4v-neon-shooting-star.jpg%3Fv%3D1686906029&w=640&q=75" alt="Royal Enfield Interceptor 650"></li>
+                    <li>Royal Enfield Royal Enfield Continental GT 650 <img src="https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/continental-gt/banner/new/gallery/gallery-7.jpg" alt="Royal Enfield Royal Enfield Continental GT 650"></li>
+                    <li>KTM Duke 200 <img src="https://cdn.bajajauto.com/-/media/images/ktm/ktm-bikes/naked-bike/ktm-200-duke-2024/200-duke-new/color/orange/00.ashx" alt="KTM Duke 200"></li>
+                    <li>KTM RC 200 <img src="KTM RC200.jpeg" alt="KTM RC 200"></li>
+                    <li>Honda Unicorn <img src="https://www.carandbike.com/_next/image?url=https%3A%2F%2Fimages.carandbike.com%2Fbike-images%2Fcolors%2Fhonda%2Fcb-unicorn-160%2Fhonda-cb-unicorn-160-imperial-red-metallic.png%3Fv%3D1589473715&w=640&q=75" alt="Honda Unicorn"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for Carousel -->
+    <script>
+        const carousel = document.getElementById('carousel');
+        const description = document.getElementById('image-description');
+        const images = ['Royal Enfield Hunter 350', 'Royal Enfield Hunter 350', 'Royal Enfield Hunter 350', 'Royal Enfield Hunter 350', 'Royal Enfield Hunter 350'];
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 500; // 500px is the width of each image
+            carousel.style.transform = `translateX(${offset}px)`;
+            description.textContent = images[currentIndex];
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            updateCarousel();
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            updateCarousel();
+        }
+    </script>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <hr>
+        <p>&copy; Bike World. All Rights Reserved.</p>
+        <p>Contact us through: <a href="mailto:bikeworld@gmail.com">bikeworld@gmail.com</a></p>
+        <center>
+            <a class="nav-link Bikes" href="About us.html">About Us</a>
+            <p>Follow us on:</p>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a> |
+            <a href="https://x.com/?lang=en&mx=2" target="_blank">Twitter</a>
+        </center>
+        <hr>
+        <p><em>Note:</em> The above information is collected from various bike websites. If any information is outdated, please contact us: <a href="mailto:bikeworld@gmail.com">bikeworld@gmail.com</a></p>
+    </div>
+</body>
+</html>

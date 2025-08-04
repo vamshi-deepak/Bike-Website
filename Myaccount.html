@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Section</title>
+  <link rel="stylesheet" href="css/account.css">
+</head>
+<body>
+    <div class="Main-heading" id="1">
+        <br><br>
+        <h1>
+            Bike world
+        </h1>
+        <p>One stop Destination for all Bikes </p>
+    </div>
+    <div class="main-body">
+        <div class="nav-link">
+        <nav class="nav justify-content-center  ">
+            |<a class="nav-link Home" href="homepage.html" aria-current="page">Home</a>|
+            <a class="nav-link Accessories" href="Accessories.html">Accessories</a>|
+            <a class="nav-link About" href="New-launches.html">New-Launches</a>|
+            <a class="nav-link Login" href="Login.html">Login</a>|
+            <a class="nav-link Login" href="Myaccount.html">Account</a>|
+            
+        </nav>
+
+        
+        
+        </div>
+        <br>
+   
+  <div class="container">
+    <h1><center>Account</center></h1><br>
+    <div class="profile-section">
+      <div class="profile-header">
+        <!-- Profile image section with file input for image upload -->
+        <input type="file" id="profile-pic-input" accept="image/*" style="display:none;" onchange="updateProfilePic(event)">
+        <div id="profile-pic" class="profile-pic" onclick="document.getElementById('profile-pic-input').click()">
+          <!-- Default profile picture (initial letter of the name) -->
+          <img src="KTM RC200.jpeg" sizes="50px;">
+        </div>
+        <h2 id="username">Vamshi_Deepak</h2><br>
+        <button class="edit-btn" onclick="editUsername()">Edit Username</button>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail">
+          <label>Name: </label>
+          <span id="name">Vamshi Deepak</span> 
+          <button class="edit-btn" onclick="editname()">Edit</button>
+        </div>
+        <div class="detail">
+          <label>Date of Birth: </label>
+          <span id="dob">03-july-2005</span>
+          <button class="edit-btn" onclick="editdob()">Edit</button>
+        </div>
+        <div class="detail">
+          <label>Email: </label>
+          <span id="email">vamshideepak94@gmail.com</span>
+          <button class="edit-btn" onclick="editDetail('email')">Edit</button>
+        </div>
+        <div class="detail">
+          <label>Phone Number: </label>
+          <span id="phone">939800****</span>
+          <button class="edit-btn" onclick="editDetail('phone')">Edit</button>
+        </div>
+        <div class="detail">
+          <label>Address: </label>
+          <span id="address">Hyderabad</span>
+          <button class="edit-btn" onclick="editDetail('address')">Edit</button>
+        </div>
+      </div>
+
+      <!-- Settings button -->
+      <button class="edit-btn" onclick="openSettings()">Settings</button>
+    </div>
+  </div>
+
+  <!-- Delete Account Modal (initially hidden) -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Delete Account</h2>
+      <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+      <input type="password" id="delete-password" placeholder="Enter password" />
+      <button class="edit-btn" onclick="deleteAccount()">Delete Account</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+        alert("You are not logged in. Redirecting to login page.");
+        window.location.href = "Login.html";
+        return;
+    }
+
+    // Fetch user profile
+    fetch("http://localhost:3000/api/user/profile", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const { username, name, dob, email, phone, address } = data.user;
+                document.getElementById("username").textContent = username;
+                document.getElementById("name").textContent = name || "Not provided";
+                document.getElementById("dob").textContent = dob || "Not provided";
+                document.getElementById("email").textContent = email || "Not provided";
+                document.getElementById("phone").textContent = phone || "Not provided";
+                document.getElementById("address").textContent = address || "Not provided";
+                updateProfileInitial();
+            } else {
+                console.error("Error fetching user data:", data.message);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+});
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Simulate getting a token after login (replace with actual login process)
+      const token = localStorage.getItem("authToken"); // Replace with a real token from your login system
+      
+      if (!token) {
+        alert("You are not logged in. Redirecting to login page.");
+        window.location.href = "Login.html"; // Redirect to login if no token
+      } else {
+        // Fetch user data using token
+        fetch("http://localhost:3000/api/user/profile", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`, // Send token for authentication
+          },
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              const { username, name, dob, email, phone, address } = data.user;
+              document.getElementById("username").textContent = username;
+              document.getElementById("name").textContent = name || "Not provided";
+              document.getElementById("dob").textContent = dob || "Not provided";
+              document.getElementById("email").textContent = email || "Not provided";
+              document.getElementById("phone").textContent = phone || "Not provided";
+              document.getElementById("address").textContent = address || "Not provided";
+              updateProfileInitial();
+            } else {
+              console.error("Error fetching user data:", data.message);
+            }
+          })
+          .catch(error => console.error("Error:", error));
+      }
+    });
+  
+    // Update profile details on backend
+    function editDetail(field) {
+      const currentValue = document.getElementById(field).textContent;
+      const newValue = prompt(`Enter new ${field}:`, currentValue);
+  
+      if (newValue && newValue !== currentValue) {
+        const token = localStorage.getItem("authToken"); // Authentication token
+  
+        fetch("http://localhost:3000/api/user/update", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({ field, value: newValue }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              document.getElementById(field).textContent = newValue;
+            } else {
+              alert("Error updating data: " + data.message);
+            }
+          })
+          .catch(error => console.error("Error updating user data:", error));
+      }
+    }
+  </script>
+  
+
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Profile Picture Styling */
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ccc; /* Default background color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      color: white;
+      text-transform: uppercase;
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</body>
+</html>
